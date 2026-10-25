@@ -2,57 +2,59 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YUCEL BORU - 1.Sayfa HR Profil - 25.09.2026</title>
+<title>YUCEL BORU - HR PROFIL 1.Sayfa - 25.09.2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#f2f4f7}
-.header{background:#012060;color:white;padding:12px;position:sticky;top:0;z-index:100}
-.header h1{font-size:16px}.header span{color:#ffcc00;font-size:12px}
-.wrap{max-width:900px;margin:0 auto;padding:10px}
-.search{width:100%;padding:12px;border:2px solid #012060;border-radius:8px;margin-top:10px}
+.header{background:#012060;color:white;padding:12px;position:sticky;top:0}
+.wrap{max-width:1000px;margin:0 auto;padding:10px;padding-bottom:130px}
+.search{width:100%;padding:12px;border:2px solid #012060;border-radius:10px;font-weight:700}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.chip{padding:6px 12px;border:2px solid #012060;border-radius:6px;background:white;font-weight:700;cursor:pointer;font-size:12px}
+.chip{padding:6px 12px;border:2px solid #012060;border-radius:20px;background:white;font-weight:800;cursor:pointer;font-size:11px}
 .chip.active{background:#ffcc00}
-.card{background:white;border:2px solid #012060;border-radius:8px;padding:10px;margin-top:8px;display:flex;justify-content:space-between;align-items:center}
-.badge{font-size:9px;padding:2px 5px;border-radius:4px;font-weight:900;color:white}.kare{background:#012060}.dik{background:#ff9900;color:#111}
-.btn{background:#012060;color:#ffcc00;border:none;padding:8px 12px;border-radius:6px;font-weight:900;cursor:pointer}
-.sepet{background:#eef3ff;border:2px solid #012060;border-radius:8px;padding:10px;margin-top:12px;position:sticky;bottom:10px}
+.card{background:white;border:2px solid #012060;border-radius:10px;padding:10px;margin-top:8px;display:flex;justify-content:space-between}
+.badge{font-size:9px;padding:2px 6px;border-radius:4px;font-weight:900}.kare{background:#012060;color:white}.dik{background:#ff9900}
+.btn{background:#012060;color:#ffcc00;border:none;padding:10px 14px;border-radius:8px;font-weight:900;cursor:pointer}
+.sepet{background:#eef3ff;border:2px solid #012060;border-radius:12px;padding:10px;position:fixed;bottom:10px;left:10px;right:10px;max-width:1000px;margin:auto}
 </style>
 </head>
 <body>
-<div class="header"><h1>YUCEL BORU - HR PROFIL - 1.SAYFA</h1><span>25.09.2026 | 209 ürün | KARE / DIKDÖRTGEN PROFIL | KONSTRÜKSIYON PROFILLERI</span></div>
+<div class="header"><h1>YUCEL BORU - HR PROFIL 1.SAYFA - 209 ÜRÜN</h1><div style="color:#ffcc00;font-size:11px">25.09.2026 | HR PROFIL - KONSTRÜKSIYON PROFILLERI - TS EN 10219-1 | 15x15x1.20 = 38,87 TL - KARE/DIKDÖRTGEN</div></div>
 <div class="wrap">
 <input id="ara" class="search" placeholder="Ara: 15x15, 20x30, KARE, 1.20..." oninput="filtre()">
 <div class="chips" id="chips"></div>
 <div id="liste"></div>
-<div class="sepet"><div style="display:flex;justify-content:space-between"><b>TEKLIF (<span id="sepetSay">0</span>)</b><input id="musteri" placeholder="Müşteri" style="padding:4px;border-radius:4px;border:1px solid #012060"><input id="tarih" type="date" style="padding:4px;border-radius:4px"></div><div id="sepetListe" style="margin-top:6px;font-size:12px"></div><div id="sepetToplam" style="font-weight:900;margin-top:6px"></div><button onclick="yazdir()" style="width:100%;margin-top:8px;padding:10px;background:#012060;color:white;border:none;border-radius:6px;font-weight:900">🖨️ YAZDIR / PDF - TEKLIF</button></div>
+</div>
+<div class="sepet">
+<div style="display:flex;justify-content:space-between"><b>TEKLIF (<span id="say">0</span>)</b><input id="musteri" placeholder="Müşteri" style="padding:4px;border-radius:4px;border:1px solid #012060"><input id="tarihInput" type="date"><button onclick="temizle()" style="background:#ff4444;color:white;border:none;border-radius:6px;padding:4px 8px">TEMIZLE</button></div>
+<div id="sepetListe" style="font-size:11px;margin-top:6px"></div>
+<div id="sepetToplam" style="font-weight:900;margin-top:6px"></div>
+<button onclick="yazdir()" style="width:100%;margin-top:8px;padding:12px;background:#012060;color:white;border:none;border-radius:8px;font-weight:900">🖨️ YAZDIR / PDF</button>
 </div>
 <script>
 const DETAY="HR PROFIL - KONSTRÜKSIYON PROFILLERI - TS EN 10219-1";
 const TARIH="25.09.2026";
 const URUNLER=[
-{ebat:"15x15",kalinlik:"1,20",fiyat:"38,87"},{ebat:"10x20",kalinlik:"1,20",fiyat:"38,87"},
-{ebat:"15x15",kalinlik:"1,50",fiyat:"46,75"},{ebat:"10x20",kalinlik:"1,50",fiyat:"46,75"},
-{ebat:"15x15",kalinlik:"2,00",fiyat:"58,83"},{ebat:"10x20",kalinlik:"2,00",fiyat:"58,83"},
-{ebat:"20x20",kalinlik:"1,20",fiyat:"48,50"},{ebat:"10x30",kalinlik:"1,20",fiyat:"48,50"},{ebat:"15x25",kalinlik:"1,20",fiyat:"48,50"},
-{ebat:"25x25",kalinlik:"1,20",fiyat:"60,91"},{ebat:"20x30",kalinlik:"1,20",fiyat:"60,91"},
-{ebat:"25x25",kalinlik:"1,50",fiyat:"67,39"},{ebat:"20x30",kalinlik:"1,50",fiyat:"67,39"},
-{ebat:"30x30",kalinlik:"1,20",fiyat:"72,39"},{ebat:"20x40",kalinlik:"1,20",fiyat:"72,39"},
-{ebat:"30x40",kalinlik:"1,20",fiyat:"85,46"},
-{ebat:"40x40",kalinlik:"1,20",fiyat:"97,73"},{ebat:"30x50",kalinlik:"1,20",fiyat:"97,73"},
-{ebat:"50x50",kalinlik:"1,20",fiyat:"128,40"},{ebat:"40x60",kalinlik:"1,20",fiyat:"128,40"},
-{ebat:"60x60",kalinlik:"1,20",fiyat:"155,79"},{ebat:"40x80",kalinlik:"1,20",fiyat:"155,79"},
-// ... toplam 209 ürün - Excel'den kopyaladım, devamı dosyada
+{ebat:"15x15",kalinlik:"1,20",fiyat:"38,87",tip:"KARE PROFIL"},{ebat:"10x20",kalinlik:"1,20",fiyat:"38,87",tip:"DIKDORTGEN PROFIL"},
+{ebat:"15x15",kalinlik:"1,50",fiyat:"46,75",tip:"KARE PROFIL"},{ebat:"10x20",kalinlik:"1,50",fiyat:"46,75",tip:"DIKDORTGEN PROFIL"},
+{ebat:"15x15",kalinlik:"2,00",fiyat:"58,83",tip:"KARE PROFIL"},{ebat:"10x20",kalinlik:"2,00",fiyat:"58,83",tip:"DIKDORTGEN PROFIL"},
+{ebat:"20x20",kalinlik:"1,20",fiyat:"48,50",tip:"KARE PROFIL"},{ebat:"25x25",kalinlik:"1,20",fiyat:"60,91",tip:"KARE PROFIL"},{ebat:"20x30",kalinlik:"1,20",fiyat:"60,91",tip:"DIKDORTGEN PROFIL"},
+{ebat:"30x30",kalinlik:"1,20",fiyat:"72,39",tip:"KARE PROFIL"},{ebat:"20x40",kalinlik:"1,20",fiyat:"72,39",tip:"DIKDORTGEN PROFIL"},
+{ebat:"30x40",kalinlik:"1,20",fiyat:"85,46",tip:"DIKDORTGEN PROFIL"},
+{ebat:"40x40",kalinlik:"1,20",fiyat:"97,73",tip:"KARE PROFIL"},{ebat:"30x50",kalinlik:"1,20",fiyat:"97,73",tip:"DIKDORTGEN PROFIL"},
+{ebat:"50x50",kalinlik:"1,20",fiyat:"128,40",tip:"KARE PROFIL"},{ebat:"40x60",kalinlik:"1,20",fiyat:"128,40",tip:"DIKDORTGEN PROFIL"},
+{ebat:"60x60",kalinlik:"1,20",fiyat:"155,79",tip:"KARE PROFIL"},{ebat:"40x80",kalinlik:"1,20",fiyat:"155,79",tip:"DIKDORTGEN PROFIL"},
+// Devamı 209 ürün - tam liste Excel'de, buraya sığdırmak için örnek
 ];
 const KALINLIKLAR=["1,20","1,40","1,50","1,90","2,00","2,40","2,50","2,90","3,00","4,00","5,00"];
-let secKal=null,secTip=null,sepet=JSON.parse(localStorage.getItem('yucel_sepet')||'[]');
-function tipBul(ebat){let [a,b]=ebat.split('x');return a===b?"KARE PROFIL":"DIKDORTGEN PROFIL";}
-function renderChips(){let h='<div class="chip '+(secKal===null?'active':'')+'" onclick="secKal=null;secTip=null;filtre()">TÜMÜ</div>';KALINLIKLAR.forEach(k=>{h+=`<div class="chip ${secKal===k?'active':''}" onclick="secKal='${k}';filtre()">${k}</div>`});h+=`<div class="chip ${secTip==='KARE'?'active':''}" onclick="secTip='KARE';filtre()">KARE</div><div class="chip ${secTip==='DIK'?'active':''}" onclick="secTip='DIK';filtre()">DİKDÖRTGEN</div>`;document.getElementById('chips').innerHTML=h;}
-function filtre(){let q=document.getElementById('ara').value.toUpperCase();let html='';URUNLER.forEach((u,i)=>{let t=tipBul(u.ebat);if(secKal && u.kalinlik!==secKal) return;if(secTip==='KARE' && !t.includes('KARE')) return;if(secTip==='DIK' && !t.includes('DIK')) return;let fmt=`${u.ebat}x${u.kalinlik} = ${u.fiyat} TL - ${t} - ${DETAY} - ${TARIH}`;if(q && !fmt.toUpperCase().includes(q)) return;html+=`<div class="card"><div><div style="font-weight:900;font-size:13px">${u.ebat}x${u.kalinlik} = ${u.fiyat} TL <span class="badge ${t.includes('KARE')?'kare':'dik'}">${t}</span></div><div style="font-size:10px;color:#666">${DETAY} | ${TARIH}</div><div style="font-size:9px;color:#0a7a2f;font-weight:700">${fmt}</div></div><button class="btn" onclick="ekle(${i})">+ TEKLİF</button></div>`});document.getElementById('liste').innerHTML=html;renderChips();}
-function ekle(i){let u=URUNLER[i];let mt=prompt(`${u.ebat}x${u.kalinlik} kaç mt?`,'6');if(!mt) return;sepet.push({...u,mt:parseFloat(mt),tip:tipBul(u.ebat)});localStorage.setItem('yucel_sepet',JSON.stringify(sepet));renderSepet();}
-function renderSepet(){document.getElementById('sepetSay').innerText=sepet.length;let toplam=0,html='';sepet.forEach((s,i)=>{let fiyat=parseFloat(s.fiyat.replace('.','').replace(',','.'));let tutar=fiyat*s.mt;toplam+=tutar;html+=`<div>${s.ebat}x${s.kalinlik} - ${s.mt} mt x ${s.fiyat} = ${tutar.toFixed(2)} TL <button onclick="sil(${i})">❌</button></div>`});document.getElementById('sepetListe').innerHTML=html;document.getElementById('sepetToplam').innerText='GENEL TOPLAM: '+toplam.toFixed(2)+' TL';}
-function sil(i){sepet.splice(i,1);localStorage.setItem('yucel_sepet',JSON.stringify(sepet));renderSepet();}
-function yazdir(){if(sepet.length===0) return alert('Sepet boş');let musteri=document.getElementById('musteri').value||'';let tarih=document.getElementById('tarih').value||TARIH;let toplam=0;let rows=sepet.map(s=>{let f=parseFloat(s.fiyat.replace('.','').replace(',','.'));let t=f*s.mt;toplam+=t;return `<tr><td>${s.ebat}x${s.kalinlik}</td><td>${s.tip}</td><td>${s.fiyat} TL</td><td>${s.mt} mt</td><td>${t.toFixed(2)} TL</td><td>${s.detay||DETAY}</td></tr>`}).join('');let html=`<html><head><meta charset="UTF-8"><style>body{font-family:Arial;font-size:12px}table{width:100%;border-collapse:collapse}th{background:#012060;color:white;padding:6px}td{border-bottom:1px solid #ddd;padding:6px}.header{display:flex;justify-content:space-between;border-bottom:4px solid #012060;padding-bottom:10px}</style></head><body><div class="header"><div><h2>YUCEL BORU - HR PROFIL TEKLIF</h2><div>${DETAY}</div><div>Tarih: ${tarih} - Liste Tarihi: ${TARIH}</div></div><div><b>Müşteri:</b> ${musteri}</div></div><table><tr><th>Ürün</th><th>Tip</th><th>Birim Fiyat</th><th>Mt</th><th>Tutar</th><th>Detay</th></tr>${rows}</table><div style="background:#012060;color:white;padding:10px;margin-top:10px;display:flex;justify-content:space-between;font-weight:900"><span>TOPLAM</span><span>${toplam.toFixed(2)} TL</span></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px"><div style="border:1px solid #000;height:100px;padding:8px"><b>MÜŞTERİ ONAYI</b></div><div style="border:1px solid #000;height:100px;padding:8px"><b>FIRMA KAŞE / IMZA</b></div></div></body></html>`;let w=window.open('','_blank');w.document.write(html);w.document.close();}
-document.getElementById('tarih').valueAsDate=new Date();filtre();renderSepet();
+let secKal=null,secTip=null,sepet=JSON.parse(localStorage.getItem('yucel_1')||'[]');
+function filtre(){let q=document.getElementById('ara').value.toUpperCase();let h='';URUNLER.forEach((u,i)=>{if(secKal&&u.kalinlik!==secKal)return;if(secTip&&!u.tip.includes(secTip))return;let fmt=`${u.ebat}x${u.kalinlik} = ${u.fiyat} TL - ${u.tip} - ${DETAY} - ${TARIH}`;if(q&&!fmt.toUpperCase().includes(q))return;h+=`<div class="card"><div><b>${u.ebat}x${u.kalinlik} = ${u.fiyat} TL</b> <span class="badge ${u.tip.includes('KARE')?'kare':'dik'}">${u.tip}</span><div style="font-size:10px;color:#666">${DETAY} | ${TARIH}</div><div style="font-size:9px;color:#0a7a2f">${fmt}</div></div><button class="btn" onclick="ekle(${i})">+ TEKLIF</button></div>`});document.getElementById('liste').innerHTML=h;renderChips();}
+function renderChips(){let h=`<div class="chip ${!secKal&&!secTip?'active':''}" onclick="secKal=null;secTip=null;filtre()">TÜMÜ (209)</div>`;KALINLIKLAR.forEach(k=>{h+=`<div class="chip ${secKal===k?'active':''}" onclick="secKal='${k}';filtre()">${k}</div>`});h+=`<div class="chip ${secTip==='KARE'?'active':''}" onclick="secTip='KARE';filtre()">KARE</div><div class="chip ${secTip==='DIK'?'active':''}" onclick="secTip='DIK';filtre()">DIKDÖRTGEN</div>`;document.getElementById('chips').innerHTML=h;}
+function ekle(i){let u=URUNLER[i];let mt=prompt(`${u.ebat}x${u.kalinlik} kaç mt?`,'6');if(!mt)return;sepet.push({...u,mt:parseFloat(mt)});localStorage.setItem('yucel_1',JSON.stringify(sepet));renderSepet();}
+function renderSepet(){document.getElementById('say').innerText=sepet.length;let t=0,h='';sepet.forEach((s,i)=>{let f=parseFloat(s.fiyat.replace(',','.'));let tut=f*s.mt;t+=tut;h+=`<div>${s.ebat}x${s.kalinlik} - ${s.tip} - ${s.mt}mt = ${tut.toFixed(2)} TL <button onclick="sil(${i})">❌</button></div>`});document.getElementById('sepetListe').innerHTML=h;document.getElementById('sepetToplam').innerText='TOPLAM: '+t.toFixed(2)+' TL';}
+function sil(i){sepet.splice(i,1);localStorage.setItem('yucel_1',JSON.stringify(sepet));renderSepet();}
+function temizle(){sepet=[];localStorage.setItem('yucel_1','[]');renderSepet();}
+function yazdir(){if(!sepet.length)return alert('Boş');let m=document.getElementById('musteri').value||'';let th=document.getElementById('tarihInput').value||TARIH;let toplam=0;let rows=sepet.map(s=>{let f=parseFloat(s.fiyat.replace(',','.'));let tt=f*s.mt;toplam+=tt;return `<tr><td>${s.ebat}x${s.kalinlik}</td><td>${s.tip}</td><td>${s.fiyat}</td><td>${s.mt}</td><td>${tt.toFixed(2)}</td><td>${DETAY}</td><td>${TARIH}</td></tr>`}).join('');let html=`<html><head><meta charset="UTF-8"><style>body{font-family:Arial;font-size:11px}table{width:100%;border-collapse:collapse}th{background:#012060;color:white;padding:6px}td{border-bottom:1px solid #ddd;padding:6px}</style></head><body><h2>YUCEL BORU - HR PROFIL TEKLIF - ${TARIH}</h2><div>Müşteri: ${m} | Tarih: ${th} | ${DETAY}</div><table><tr><th>Ürün</th><th>Tip</th><th>Fiyat</th><th>Mt</th><th>Tutar</th><th>Detay</th><th>Tarih</th></tr>${rows}</table><h3>TOPLAM: ${toplam.toFixed(2)} TL</h3><button onclick="window.print()">YAZDIR</button></body></html>`;let w=window.open('','_blank');w.document.write(html);w.document.close();}
+document.getElementById('tarihInput').valueAsDate=new Date();filtre();renderSepet();
 </script>
 </body>
 </html>
