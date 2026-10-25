@@ -2,59 +2,51 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YUCEL BORU - HR PROFIL 1.Sayfa - 25.09.2026</title>
+<title>YÜCEL - TOSÇELİK PROFİL - TEKLİF - BANKA HESAPLI</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial;background:#f2f4f7}
-.header{background:#012060;color:white;padding:12px;position:sticky;top:0}
-.wrap{max-width:1000px;margin:0 auto;padding:10px;padding-bottom:130px}
-.search{width:100%;padding:12px;border:2px solid #012060;border-radius:10px;font-weight:700}
+:root{--mavi:#012060;--sari:#ffcc00;--turuncu:#ff9900}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,Helvetica;background:#f4f6fa;color:#111}
+.header{position:sticky;top:0;z-index:100;background:var(--mavi);color:white;padding:10px 12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.logoBox{display:flex;gap:10px;align-items:center}.logoBox img{width:48px;height:48px;object-fit:contain;background:white;border-radius:8px;padding:4px}
+.header h1{font-size:14px}.header small{color:var(--sari);font-size:11px;display:block}
+.doviz{background:#001a4d;border:1px solid var(--sari);border-radius:10px;padding:6px 10px;font-size:11px;min-width:140px}.doviz b{color:var(--sari)}
+.wrap{max-width:1100px;margin:0 auto;padding:10px;padding-bottom:180px}
+.searchWrap{position:sticky;top:68px;z-index:90;background:#f4f6fa;padding:8px 0}
+.search{width:100%;padding:14px;border:3px solid var(--mavi);border-radius:12px;font-weight:900;font-size:15px;outline:none}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.chip{padding:6px 12px;border:2px solid #012060;border-radius:20px;background:white;font-weight:800;cursor:pointer;font-size:11px}
-.chip.active{background:#ffcc00}
-.card{background:white;border:2px solid #012060;border-radius:10px;padding:10px;margin-top:8px;display:flex;justify-content:space-between}
-.badge{font-size:9px;padding:2px 6px;border-radius:4px;font-weight:900}.kare{background:#012060;color:white}.dik{background:#ff9900}
-.btn{background:#012060;color:#ffcc00;border:none;padding:10px 14px;border-radius:8px;font-weight:900;cursor:pointer}
-.sepet{background:#eef3ff;border:2px solid #012060;border-radius:12px;padding:10px;position:fixed;bottom:10px;left:10px;right:10px;max-width:1000px;margin:auto}
+.chip{padding:7px 12px;border-radius:20px;border:2px solid var(--mavi);background:white;font-weight:800;font-size:11px;cursor:pointer}.chip.active{background:var(--sari)}
+.card{background:white;border:2px solid var(--mavi);border-radius:14px;padding:10px;margin-top:10px}
+.ebat{font-weight:900;font-size:15px}.badge{font-size:9px;padding:3px 7px;border-radius:6px;font-weight:900}.kare{background:var(--mavi);color:white}.dik{background:var(--turuncu)}.yucel{background:#0a7a2f;color:white}.tosc{background:#7c3aed;color:white}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:6px;background:#eef3ff;border-radius:10px;padding:8px}
+.controls label{font-size:9px;font-weight:900;color:var(--mavi)}.controls input{width:100%;padding:7px;border-radius:8px;border:1.5px solid var(--mavi);font-weight:800}
+.hesap{display:flex;gap:6px;flex-wrap:wrap;font-size:11px;font-weight:700}.hesap span{background:#fff3cd;border-radius:6px;padding:4px 6px;border:1px dashed #999}
+.btn{background:var(--mavi);color:var(--sari);border:none;padding:10px 14px;border-radius:10px;font-weight:900;cursor:pointer}
+.btn2{background:var(--sari);color:#111;border:2px solid var(--mavi);padding:10px 14px;border-radius:10px;font-weight:900;cursor:pointer;width:100%}
+.sepet{position:fixed;bottom:0;left:0;right:0;background:white;border-top:4px solid var(--mavi);max-height:52vh;overflow:auto;padding:10px;z-index:200}
+.inp{padding:7px;border-radius:8px;border:1.5px solid var(--mavi);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px}th{background:var(--mavi);color:white;padding:6px}td{padding:6px;border-bottom:1px solid #ddd}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;z-index:300;align-items:center;justify-content:center;padding:10px}
+.modalBox{background:white;border-radius:14px;padding:14px;max-width:520px;width:100%;max-height:92vh;overflow:auto;border:3px solid var(--mavi)}
 </style>
 </head>
 <body>
-<div class="header"><h1>YUCEL BORU - HR PROFIL 1.SAYFA - 209 ÜRÜN</h1><div style="color:#ffcc00;font-size:11px">25.09.2026 | HR PROFIL - KONSTRÜKSIYON PROFILLERI - TS EN 10219-1 | 15x15x1.20 = 38,87 TL - KARE/DIKDÖRTGEN</div></div>
-<div class="wrap">
-<input id="ara" class="search" placeholder="Ara: 15x15, 20x30, KARE, 1.20..." oninput="filtre()">
-<div class="chips" id="chips"></div>
-<div id="liste"></div>
+<div class="header">
+<div class="logoBox">
+<img id="logoImg" src="https://via.placeholder.com/80x80?text=LOGO">
+<div><h1 id="firmaAdiG">YÜCEL BORU - PROFİL TEKLİF</h1><small id="firmaAdresG">Aksaray OSB | 0 532 XXX XX XX</small><small style="color:#7dd3fc">Liste: <span id="listeSay"></span> | 25.09.2026 | <span onclick="openAyar()" style="cursor:pointer;text-decoration:underline">⚙️ AYAR / BANKA</span></small></div>
 </div>
-<div class="sepet">
-<div style="display:flex;justify-content:space-between"><b>TEKLIF (<span id="say">0</span>)</b><input id="musteri" placeholder="Müşteri" style="padding:4px;border-radius:4px;border:1px solid #012060"><input id="tarihInput" type="date"><button onclick="temizle()" style="background:#ff4444;color:white;border:none;border-radius:6px;padding:4px 8px">TEMIZLE</button></div>
-<div id="sepetListe" style="font-size:11px;margin-top:6px"></div>
-<div id="sepetToplam" style="font-weight:900;margin-top:6px"></div>
-<button onclick="yazdir()" style="width:100%;margin-top:8px;padding:12px;background:#012060;color:white;border:none;border-radius:8px;font-weight:900">🖨️ YAZDIR / PDF</button>
+<div class="doviz"><b>DÖVİZ</b><br>USD: <span id="usd">41,20</span> TL<br>EUR: <span id="eur">44,80</span> TL</div>
 </div>
-<script>
-const DETAY="HR PROFIL - KONSTRÜKSIYON PROFILLERI - TS EN 10219-1";
-const TARIH="25.09.2026";
-const URUNLER=[
-{ebat:"15x15",kalinlik:"1,20",fiyat:"38,87",tip:"KARE PROFIL"},{ebat:"10x20",kalinlik:"1,20",fiyat:"38,87",tip:"DIKDORTGEN PROFIL"},
-{ebat:"15x15",kalinlik:"1,50",fiyat:"46,75",tip:"KARE PROFIL"},{ebat:"10x20",kalinlik:"1,50",fiyat:"46,75",tip:"DIKDORTGEN PROFIL"},
-{ebat:"15x15",kalinlik:"2,00",fiyat:"58,83",tip:"KARE PROFIL"},{ebat:"10x20",kalinlik:"2,00",fiyat:"58,83",tip:"DIKDORTGEN PROFIL"},
-{ebat:"20x20",kalinlik:"1,20",fiyat:"48,50",tip:"KARE PROFIL"},{ebat:"25x25",kalinlik:"1,20",fiyat:"60,91",tip:"KARE PROFIL"},{ebat:"20x30",kalinlik:"1,20",fiyat:"60,91",tip:"DIKDORTGEN PROFIL"},
-{ebat:"30x30",kalinlik:"1,20",fiyat:"72,39",tip:"KARE PROFIL"},{ebat:"20x40",kalinlik:"1,20",fiyat:"72,39",tip:"DIKDORTGEN PROFIL"},
-{ebat:"30x40",kalinlik:"1,20",fiyat:"85,46",tip:"DIKDORTGEN PROFIL"},
-{ebat:"40x40",kalinlik:"1,20",fiyat:"97,73",tip:"KARE PROFIL"},{ebat:"30x50",kalinlik:"1,20",fiyat:"97,73",tip:"DIKDORTGEN PROFIL"},
-{ebat:"50x50",kalinlik:"1,20",fiyat:"128,40",tip:"KARE PROFIL"},{ebat:"40x60",kalinlik:"1,20",fiyat:"128,40",tip:"DIKDORTGEN PROFIL"},
-{ebat:"60x60",kalinlik:"1,20",fiyat:"155,79",tip:"KARE PROFIL"},{ebat:"40x80",kalinlik:"1,20",fiyat:"155,79",tip:"DIKDORTGEN PROFIL"},
-// Devamı 209 ürün - tam liste Excel'de, buraya sığdırmak için örnek
-];
-const KALINLIKLAR=["1,20","1,40","1,50","1,90","2,00","2,40","2,50","2,90","3,00","4,00","5,00"];
-let secKal=null,secTip=null,sepet=JSON.parse(localStorage.getItem('yucel_1')||'[]');
-function filtre(){let q=document.getElementById('ara').value.toUpperCase();let h='';URUNLER.forEach((u,i)=>{if(secKal&&u.kalinlik!==secKal)return;if(secTip&&!u.tip.includes(secTip))return;let fmt=`${u.ebat}x${u.kalinlik} = ${u.fiyat} TL - ${u.tip} - ${DETAY} - ${TARIH}`;if(q&&!fmt.toUpperCase().includes(q))return;h+=`<div class="card"><div><b>${u.ebat}x${u.kalinlik} = ${u.fiyat} TL</b> <span class="badge ${u.tip.includes('KARE')?'kare':'dik'}">${u.tip}</span><div style="font-size:10px;color:#666">${DETAY} | ${TARIH}</div><div style="font-size:9px;color:#0a7a2f">${fmt}</div></div><button class="btn" onclick="ekle(${i})">+ TEKLIF</button></div>`});document.getElementById('liste').innerHTML=h;renderChips();}
-function renderChips(){let h=`<div class="chip ${!secKal&&!secTip?'active':''}" onclick="secKal=null;secTip=null;filtre()">TÜMÜ (209)</div>`;KALINLIKLAR.forEach(k=>{h+=`<div class="chip ${secKal===k?'active':''}" onclick="secKal='${k}';filtre()">${k}</div>`});h+=`<div class="chip ${secTip==='KARE'?'active':''}" onclick="secTip='KARE';filtre()">KARE</div><div class="chip ${secTip==='DIK'?'active':''}" onclick="secTip='DIK';filtre()">DIKDÖRTGEN</div>`;document.getElementById('chips').innerHTML=h;}
-function ekle(i){let u=URUNLER[i];let mt=prompt(`${u.ebat}x${u.kalinlik} kaç mt?`,'6');if(!mt)return;sepet.push({...u,mt:parseFloat(mt)});localStorage.setItem('yucel_1',JSON.stringify(sepet));renderSepet();}
-function renderSepet(){document.getElementById('say').innerText=sepet.length;let t=0,h='';sepet.forEach((s,i)=>{let f=parseFloat(s.fiyat.replace(',','.'));let tut=f*s.mt;t+=tut;h+=`<div>${s.ebat}x${s.kalinlik} - ${s.tip} - ${s.mt}mt = ${tut.toFixed(2)} TL <button onclick="sil(${i})">❌</button></div>`});document.getElementById('sepetListe').innerHTML=h;document.getElementById('sepetToplam').innerText='TOPLAM: '+t.toFixed(2)+' TL';}
-function sil(i){sepet.splice(i,1);localStorage.setItem('yucel_1',JSON.stringify(sepet));renderSepet();}
-function temizle(){sepet=[];localStorage.setItem('yucel_1','[]');renderSepet();}
-function yazdir(){if(!sepet.length)return alert('Boş');let m=document.getElementById('musteri').value||'';let th=document.getElementById('tarihInput').value||TARIH;let toplam=0;let rows=sepet.map(s=>{let f=parseFloat(s.fiyat.replace(',','.'));let tt=f*s.mt;toplam+=tt;return `<tr><td>${s.ebat}x${s.kalinlik}</td><td>${s.tip}</td><td>${s.fiyat}</td><td>${s.mt}</td><td>${tt.toFixed(2)}</td><td>${DETAY}</td><td>${TARIH}</td></tr>`}).join('');let html=`<html><head><meta charset="UTF-8"><style>body{font-family:Arial;font-size:11px}table{width:100%;border-collapse:collapse}th{background:#012060;color:white;padding:6px}td{border-bottom:1px solid #ddd;padding:6px}</style></head><body><h2>YUCEL BORU - HR PROFIL TEKLIF - ${TARIH}</h2><div>Müşteri: ${m} | Tarih: ${th} | ${DETAY}</div><table><tr><th>Ürün</th><th>Tip</th><th>Fiyat</th><th>Mt</th><th>Tutar</th><th>Detay</th><th>Tarih</th></tr>${rows}</table><h3>TOPLAM: ${toplam.toFixed(2)} TL</h3><button onclick="window.print()">YAZDIR</button></body></html>`;let w=window.open('','_blank');w.document.write(html);w.document.close();}
-document.getElementById('tarihInput').valueAsDate=new Date();filtre();renderSepet();
-</script>
-</body>
-</html>
+<div class="wrap"><div class="searchWrap"><input id="ara" class="search" placeholder="Ara: 20x30 yaz, 40x60 yaz..." oninput="filtre()"><div class="chips" id="chips"></div></div><div id="liste"></div></div>
+<div class="sepet"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px"><b>TEKLİF SEPETİ (<span id="say">0</span>)</b><input id="musteri" class="inp" placeholder="Müşteri Adı"><input id="mTarih" type="date" class="inp"><input id="genelIsk" type="number" placeholder="Genel İsk %" class="inp" style="width:90px" oninput="renderSepet()"><input id="genelKdv" type="number" value="20" class="inp" style="width:70px" oninput="renderSepet()"><button class="inp" style="background:#ff4444;color:white;border:none" onclick="temizle()">TEMİZLE</button></div><div id="sepetListe"></div><div id="sepetToplam" style="font-weight:900;margin-top:6px;color:var(--mavi)"></div><button class="btn2" onclick="yazdir()">🖨️ TEKLİF FORMU - BANKA + KAŞE</button></div>
+
+<div class="modal" id="ayarModal"><div class="modalBox">
+<h3>⚙️ AYARLAR</h3>
+<label>Firma Adı</label><input id="aFirma" class="inp" style="width:100%;margin:4px 0" value="YÜCEL BORU - Aksaray">
+<label>Adres</label><input id="aAdres" class="inp" style="width:100%;margin:4px 0" value="Aksaray OSB, Merkez / AKSARAY">
+<label>İletişim</label><input id="aIlet" class="inp" style="width:100%;margin:4px 0" value="0 532 123 45 67 | info@yucelboru.com">
+<label>Logo</label><input id="aLogo" type="file" accept="image/*" class="inp" style="width:100%;margin:4px 0" onchange="logoYukle(event)">
+<label>Banka 1</label><input id="aBanka1" class="inp" style="width:100%;margin:4px 0" value="Halkbank Adana Ticari Şube : TR32 0001 2009 6130 0010 2606 18">
+<label>Banka 2</label><input id="aBanka2" class="inp" style="width:100%;margin:4px 0" value="İş Bankası Adana Ticari Şube : TR71 0006 4000 0016 0150 3596 41">
+<label>Banka 3</label><input id="aBanka3" class="inp" style="width:100%;margin:4px 0" value="Akbank Adana Toptancı Hali Şube : TR95 0004 6006 2788 8000 0537 01">
+<label>V.D. / V.N.</label><input id="aVergi" class="inp" style="width
